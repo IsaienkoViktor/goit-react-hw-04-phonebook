@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container } from './Container/Container';
 import { ContactForm } from './ContactForm/ContactForm';
-import { Filter } from './Filter/Filter';
+import { ContactFilter } from './ContactFilter/ContactFilter';
 import { ContactList } from './ContactList/ContactList';
 
 export const App = () => {
@@ -42,17 +42,13 @@ export const App = () => {
       <h1>PhoneBook</h1>
       <ContactForm onSubmit={onformSubmit} />
       <h2>Contacts</h2>
-      {contacts.length > 1 && <Filter onFilter={onFilter} filter={filter} />}
-      {contacts.length > 0 ? (
-        <ContactList
-          contacts={contacts}
-          filter={filter}
-          onDelete={onDelete}
-          filterContacts={filterContacts}
-        />
-      ) : (
-        <p>Your phonebook is empty. Please add contact.</p>
-      )}
+      <ContactFilter onFilter={onFilter} filter={filter} />
+      <ContactList
+        contacts={contacts}
+        filter={filter}
+        onDelete={onDelete}
+        filterContacts={filterContacts}
+      />
     </Container>
   );
 };

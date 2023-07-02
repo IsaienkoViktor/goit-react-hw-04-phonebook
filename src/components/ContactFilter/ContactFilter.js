@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
-import s from './Filter.css';
+import s from './ContactFilter.css';
 
-export function Filter({ filter, onFilter }) {
+export function ContactFilter({ filter, onFilter }) {
   return (
     <label className={s.label}>
       Find contacts by name
@@ -16,7 +16,7 @@ export function Filter({ filter, onFilter }) {
   );
 }
 
-Filter.propTypes = {
+ContactFilter.propTypes = {
   filter: PropTypes.string,
   onFilter: PropTypes.func.isRequired,
 };

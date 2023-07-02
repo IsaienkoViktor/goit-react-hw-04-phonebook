@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container } from './Container/Container';
+
 import { ContactForm } from './ContactForm/ContactForm';
 import { ContactFilter } from './ContactFilter/ContactFilter';
 import { ContactList } from './ContactList/ContactList';
@@ -38,7 +38,7 @@ export const App = () => {
     person.name.toLowerCase().includes(filter.toLowerCase())
   );
   return (
-    <Container>
+    <>
       <h1>PhoneBook</h1>
       <ContactForm onSubmit={onformSubmit} />
       <h2>Contacts</h2>
@@ -49,7 +49,7 @@ export const App = () => {
         onDelete={onDelete}
         filterContacts={filterContacts}
       />
-    </Container>
+    </>
   );
 };
 // class App extends Component {

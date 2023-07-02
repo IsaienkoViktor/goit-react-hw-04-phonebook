@@ -18,21 +18,11 @@ export const ContactForm = ({ onSubmit, contacts }) => {
     <form className={s.form} onSubmit={handleSubmit}>
       <label className={s.label}>
         Name
-        <input
-          className={s.input}
-          type="text"
-          name="name"
-          placeholder="John Smith"
-        />
+        <input className={s.input} type="text" placeholder="John Smith" />
       </label>
       <label className={s.label}>
         Number
-        <input
-          className={s.input}
-          type="text"
-          name="number"
-          placeholder="111-11-11"
-        />
+        <input className={s.input} type="text" placeholder="111-11-11" />
       </label>
       <button className={s.btn} type="submit">
         Add contact

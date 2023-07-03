@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ContactForm } from './ContactForm/ContactForm';
 import { ContactFilter } from './ContactFilter/ContactFilter';
 import { ContactList } from './ContactList/ContactList';
+import Container from './Container/Container';
 
 export const App = () => {
   const [filter, setFilter] = useState('');
@@ -20,9 +21,17 @@ export const App = () => {
     window.localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
 
-  const onformSubmit = ({ id, name, number }) => {
+  const onFormSubmit = ({ id, name, number }) => {
     const contact = { id, name, number };
-    return setContacts(prevState => [contact, ...prevState]);
+    const nameInContacts = contacts.find(
+      contact => contact.name.toLowerCase() === name.toLowerCase()
+    );
+    if (nameInContacts) {
+      alert(`${name} is already in contacts`);
+      return;
+    }
+    console.log(contact);
+    setContacts(prevState => [contact, ...prevState]);
   };
 
   const onFilter = e => {
@@ -38,16 +47,18 @@ export const App = () => {
   );
   return (
     <>
-      <h1>PhoneBook</h1>
-      <ContactForm onSubmit={onformSubmit} />
-      <h2>Contacts</h2>
-      <ContactFilter onFilter={onFilter} filter={filter} />
-      <ContactList
-        contacts={contacts}
-        filter={filter}
-        onDelete={onDelete}
-        filterContacts={filterContacts}
-      />
+      <Container>
+        <h1>PhoneBook</h1>
+        <ContactForm onSubmit={onFormSubmit} />
+        <h2>Contacts</h2>
+        <ContactFilter onFilter={onFilter} filter={filter} />
+        <ContactList
+          contacts={contacts}
+          filter={filter}
+          onDelete={onDelete}
+          filterContacts={filterContacts}
+        />
+      </Container>
     </>
   );
 };
